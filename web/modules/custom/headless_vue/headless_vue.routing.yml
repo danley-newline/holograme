@@ -1,0 +1,89 @@
+headless_vue.accueil:
+  path: /headless
+  defaults: 
+    _controller: Drupal\headless_vue\Controller\HeadlessVueController::contentPage
+    _title: 'Personal Vue'
+  requirements: 
+    _permission: 'access content'
+
+headless_vue.otpplug:
+  path: /plugotp
+  defaults: 
+    _controller: Drupal\headless_vue\Controller\HeadlessVueController::contentPage
+    _title: 'Personal Vue'
+  requirements: 
+    _permission: 'access content' 
+
+headless_vue.likes-setting:
+  path: /like
+  defaults: 
+    _controller: Drupal\headless_vue\Controller\HeadlessVueController::contentPage
+    _title: 'Personal Vue'
+  requirements: 
+    _permission: 'access content' 
+
+headless_vue.one-like:
+  path: /only_one_like
+  defaults: 
+    _controller: Drupal\headless_vue\Controller\HeadlessVueController::contentPage
+    _title: 'Personal Vue'
+  requirements: 
+    _permission: 'access content' 
+
+headless_vue.user-page:
+  path: /create-user
+  defaults: 
+    _controller: Drupal\headless_vue\Controller\HeadlessVueController::contentPage
+    _title: 'Personal Vue'
+  requirements: 
+    _permission: 'access content' 
+  
+headless_vue.nasapage:
+  path: /nasa-create
+  defaults: 
+    _controller: Drupal\headless_vue\Controller\HeadlessVueController::contentPage
+    _title: 'Personal Vue'
+  requirements: 
+    _permission: 'access content' 
+
+# FORMULAIRE ROUTE FORM API DRUPAL
+headless_vue.form:
+  path: /subscribe
+  defaults: 
+    _title: 'Subscribe Form'
+    _form: Drupal\headless_vue\Form\FormSubscribe
+  requirements: 
+    _permission: 'access content' 
+
+
+headless_vue.json_movie:
+  path: /api/movies
+  defaults: 
+    _controller: Drupal\headless_vue\Controller\HeadlessVueController::renderApi
+    _title: 'Json Movie list'
+  methods: [GET]
+  requirements: 
+    _access: "TRUE"
+
+
+#CUSTOM REST API FOR DRUPAL GET AND POST
+
+headless_vue.rest_api_get:
+  path: /api/get_data_user
+  defaults:
+    _controller: Drupal\headless_vue\Controller\HeadlessVueController::getDataUser
+  methods: ['GET']
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    _auth: ['basic_auth']
+
+headless_vue.rest_api_post:
+  path: /api/post_data_user
+  defaults:
+    _controller: Drupal\headless_vue\Controller\HeadlessVueController::postDataUser
+  methods: ['POST']
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    _auth: ['basic_auth']

@@ -1,0 +1,61 @@
+<?php
+
+use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+
+//HOOK FOR RENDER PAGE CONTRIBUTION
+// function diank_page_attachments(array &$page)
+// {
+//   $page['#attached']['library'][] = 'headless_vue/headless_vue';
+//   return $page;
+// }
+
+/**
+ * HOOK REDIRECT TO HOME PAGE AFTER LOGIN FORM
+ */
+function headless_vue_user_login($account) 
+{
+  $url = Url::fromRoute('<front>');
+  $new_url = new RedirectResponse($url->toString());
+  $new_url->send();
+}
+
+function headless_vue_cron() {
+  global $user;
+
+// Session longer than 3 hours
+    if ((REQUEST_TIME - 60) > $user->timestamp) {
+      module_load_include('pages.inc', 'user');
+      user_logout();
+    }
+
+}
+
+// function headless_vue_init() {
+//   drupal_add_http_header('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate, post-check=0, pre-check=0');
+// }d
+
+// $inactive = 60; //after 60 seconds the user gets logged out
+// // check to see if $_SESSION['timeout'] is set
+// if(isset($_SESSION['timeout']) ) {
+// $session_life = time() - $_SESSION['timeout'];
+// if($session_life > $inactive)
+//     { 
+//         session_destroy(); 
+//         header("Location: Logout.php"); 
+//     }
+// }
+// $_SESSION['timeout'] = time();
+
+
+// function headless_vue_user_logout(AccountInterface $account) {
+//   \Drupal::database()
+//     ->insert('logouts')
+//     ->fields([
+//     'uid' => $account
+//       ->id(),
+//     'time' => time(),
+//   ])
+//     ->execute();
+// }

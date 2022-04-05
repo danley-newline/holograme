@@ -1,0 +1,5 @@
+headless_vue:
+  version: VERSION
+  js:
+    vue/dist/build.js: {}
+ 

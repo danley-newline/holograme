@@ -1,0 +1,5 @@
+name: HeadLess Vue JS
+type: module
+description: 'A Headless to add vue js content on the project front.'
+package: Custom
+core_version_requirement: ^8 || ^9
